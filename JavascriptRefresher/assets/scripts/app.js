@@ -39,3 +39,9 @@ function showName(nom , Prenom = "MEBARKI"){
     console.log(nom + Prenom);
 }
 showName("Amine"," IKRABEM");
+// 4-Arrow Functions
+
+const arrowfunc = (nom) => {
+    return "mon nom est" +  nom;
+}
+console.log(arrowfunc("amine"));
