@@ -90,4 +90,4 @@ tab2.push({
     prenom: "swidi",
     age: "26"
 });
-tab2.map((x) => {console.log("je m'appel " + x.nom + " " + x.prenom + " et j'ai " + x.age)});
+tab2.map((x) => { console.log("je m'appel " + x.nom + " " + x.prenom + " et j'ai " + x.age) });
