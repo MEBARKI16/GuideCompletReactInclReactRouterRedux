@@ -51,21 +51,43 @@ const user = {
     prenom: "Amine",
     Age: 28,
     Affiche() {
-    console.log("Je me prénome " + this.nom + " " + this.prenom + " et j'ai " + this.Age);
+        console.log("Je me prénome " + this.nom + " " + this.prenom + " et j'ai " + this.Age);
     }
 }
 user.Affiche();
 
 class User2 {
-    constructor(nom,prenom){
+    constructor(nom, prenom) {
         this.nom = nom;
-        this.prenom = prenom ; 
+        this.prenom = prenom;
     }
-    affiche(){
+    affiche() {
         console.log(this.nom + " " + this.prenom);
     }
 }
- let x1 = new User2("Ahmed","chorfi");
- x1.affiche();
- let x2 = new User2("said","khatir");
- x2.affiche();
+let x1 = new User2("Ahmed", "chorfi");
+x1.affiche();
+let x2 = new User2("said", "khatir");
+x2.affiche();
+// 6-Arrays & Array Methods like map()
+let tab = ["amine", "ahmed", "hamid"];
+tab.map((x) => { console.log(x); })
+let tab2 = [{
+    nom: "amine",
+    prenom: "mebarki",
+    age: 28
+}, {
+    nom: "ahmed",
+    prenom: "saidi",
+    age: 25
+}, {
+    nom: "hamid",
+    prenom: "dehimi",
+    age: 30
+}];
+tab2.push({
+    nom: "lakhdar",
+    prenom: "swidi",
+    age: "26"
+});
+tab2.map((x) => {console.log("je m'appel " + x.nom + " " + x.prenom + " et j'ai " + x.age)});
