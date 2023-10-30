@@ -91,3 +91,12 @@ tab2.push({
     age: "26"
 });
 tab2.map((x) => { console.log("je m'appel " + x.nom + " " + x.prenom + " et j'ai " + x.age) });
+
+// 6- Destructuring
+const [nom, prenom] = ["mebarki", "amine"];
+console.log(nom, prenom);
+const { sexe: HF, age } = {
+    sexe: "homme",
+    age: "25"
+};
+console.log(HF, age);
