@@ -114,3 +114,17 @@ const y2 = {
   nom: "mohamed"
 };
 console.log(y2);
+
+// 8- Revisiting Control Structures
+const pass = prompt("password");
+if (pass === "Hello") {
+  console.log("Hello");
+} else if (pass === "hello") {
+  console.log("hello");
+} else {
+  console.log("erreur");
+}
+const tab = ["amine","ahmed","omar"];
+for (const t of tab) {
+  console.log(t);
+}
