@@ -100,3 +100,17 @@ const { sexe: HF, age } = {
     age: "25"
 };
 console.log(HF, age);
+
+// 7-The Spread Operator
+const x = ["mebarki", "amine"];
+const y = [...x, "mohamed"];
+console.log(y);
+const x2 = {
+  nom: "amine",
+  mebarki: "mebarki"
+};
+const y2 = {
+  ...x2,
+  nom: "mohamed"
+};
+console.log(y2);
