@@ -135,4 +135,14 @@ const x = () => {
   };
   console.log(x);
   console.log(x());
+
+// 10- Defining Functions Inside Of Functions
+function affiche() {
+    function affiche2() {
+      console.log("hello");
+    }
+    affiche2();
+  }
+  affiche();
+  
   
