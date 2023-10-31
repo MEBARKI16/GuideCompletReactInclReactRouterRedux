@@ -128,3 +128,11 @@ const tab = ["amine","ahmed","omar"];
 for (const t of tab) {
   console.log(t);
 }
+
+// 9-Using Functions as Values
+const x = () => {
+    return 2;
+  };
+  console.log(x);
+  console.log(x());
+  
