@@ -3,6 +3,9 @@ import Header from './Components/Header';
 import CoreConcept from './Components/CoreConcept.JSX';
 import TabButton from './Components/TabButton'
 function App() {
+  function HandleClick() {
+    console.log('hello world');
+  }
   return (
     <div>
       <Header />
@@ -19,10 +22,10 @@ function App() {
         <section id='examples'>
           <h2>Exemples</h2>
           <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            <TabButton onSelect={HandleClick}>Components</TabButton>
+            <TabButton onSelect={HandleClick}>JSX</TabButton>
+            <TabButton onSelect={HandleClick}>Props</TabButton>
+            <TabButton onSelect={HandleClick}>State</TabButton>
           </menu>
         </section>
       </main>

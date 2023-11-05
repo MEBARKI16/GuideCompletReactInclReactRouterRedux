@@ -1,9 +1,7 @@
-const TabButton = ({ children }) => {
-    function HandleClick() {
-        console.log('hello world');
-    }
+const TabButton = ({ children, onSelect }) => {
+
     return (
-        <li><button onClick={HandleClick}>{children}</button></li>
+        <li><button onClick={onSelect}>{children}</button></li>
     );
 }
 export default TabButton;
