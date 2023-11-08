@@ -1,7 +1,7 @@
-const TabButton = ({ children, onSelect }) => {
+const TabButton = ({ children, onSelect, isActive }) => {
 
     return (
-        <li><button onClick={onSelect}>{children}</button></li>
+        <li><button className={isActive} onClick={onSelect}>{children}</button></li>
     );
 }
 export default TabButton;

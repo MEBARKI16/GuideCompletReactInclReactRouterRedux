@@ -6,7 +6,8 @@ import { useState } from 'react';
 function App() {
   const [topic, setTopic] = useState();
   function HandleClick(selectedButton) {
-    setTopic(selectedButton)
+    setTopic(selectedButton);
+
   }
   let tabContent = <p>Please select a topic</p>;
   if (topic) {
@@ -36,10 +37,10 @@ function App() {
         <section id='examples'>
           <h2>Exemples</h2>
           <menu>
-            <TabButton onSelect={() => HandleClick("components")}>Components</TabButton>
-            <TabButton onSelect={() => HandleClick("jsx")}>JSX</TabButton>
-            <TabButton onSelect={() => HandleClick("props")}>Props</TabButton>
-            <TabButton onSelect={() => HandleClick("state")}>State</TabButton>
+            <TabButton isActive={topic === "components" ? "active" : ""} onSelect={() => HandleClick("components")}>Components</TabButton>
+            <TabButton isActive={topic === "jsx" ? "active" : ""} onSelect={() => HandleClick("jsx")}>JSX</TabButton>
+            <TabButton isActive={topic === "props" ? "active" : ""} onSelect={() => HandleClick("props")}>Props</TabButton>
+            <TabButton isActive={topic === "state" ? "active" : ""} onSelect={() => HandleClick("state")}>State</TabButton>
           </menu>
           {tabContent}
         </section>
