@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TabButton from './TabButton.jsx';
 import { EXAMPLES } from '../data.js';
 import Section from './Section.jsx';
+import Tabs from './Tabs.jsx';
 const Examples = () => {
     const [selectedTopic, setSelectedTopic] = useState();
 
@@ -26,7 +27,7 @@ const Examples = () => {
     }
     return (
         <Section id="examples" title="Examples">
-            <menu>
+            <Tabs buttons={<>
                 <TabButton
                     isSelected={selectedTopic === 'components'}
                     onSelect={() => handleSelect('components')}
@@ -51,8 +52,9 @@ const Examples = () => {
                 >
                     State
                 </TabButton>
-            </menu>
-            {tabContent}
+            </>}>
+                {tabContent}
+            </Tabs>
         </Section>
     );
 }
