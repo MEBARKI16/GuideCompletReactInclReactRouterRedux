@@ -1,6 +1,9 @@
+import { calculateInvestmentResults } from '../util/investment'
 const Results = ({ inputValues }) => {
+    const resultData = calculateInvestmentResults(inputValues);
+    console.log(resultData)
     return (
-        <p style={{maxWidth:'100%'}}>{inputValues.initialInvestment}</p>
+        <p>Results....</p>
     );
 }
 export default Results;

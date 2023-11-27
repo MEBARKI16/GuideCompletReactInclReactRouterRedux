@@ -1,6 +1,6 @@
 const UserInput = ({ setInputValues, inputValues }) => {
     const HandleChange = (x, y) => {
-        setInputValues((prev) => { return { ...prev, [x]: y } })
+        setInputValues((prev) => { return { ...prev, [x]: +y } })
         console.log(inputValues);
     }
     return (
