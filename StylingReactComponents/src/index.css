@@ -71,6 +71,7 @@ label.invalid {
 input.invalid {
   color: #ef4444;
   border-color: #f73f3f;
+  background-color: #fed2d2;
 }
 
 .actions {
