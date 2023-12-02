@@ -14,17 +14,19 @@ font-size: 0.75rem;
 font-weight: 700;
 letter-spacing: 0.1em;
 text-transform: uppercase;
-color: #6b7280;
+color: ${props => props.$invalid ? '#f87171' : '#6b7280'};
+
 `;
 const StyledInput = styled.input`
 width: 100%;
 padding: 0.75rem 1rem;
 line-height: 1.5;
-background-color: #d1d5db;
-color: #374151;
-border: 1px solid transparent;
+border: 1px solid;
 border-radius: 0.25rem;
 box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+color : ${props => props.$invalid ? '#ef4444' : '#374151'};
+border-color : ${props => props.$invalid ? '#f73f3f' : 'transparent'};
+background-color: ${props => props.$invalid ? '#fed2d2' : 'white'};
 `
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -50,19 +52,18 @@ export default function AuthInputs() {
     <div id="auth-inputs">
       <StyledDiv>
         <p className='HeaderCss'>
-          <StyledLabel className={`label ${emailNotValid ? 'invalid' : undefined}`}>Email</StyledLabel>
+          <StyledLabel $invalid={emailNotValid} >Email</StyledLabel>
           <StyledInput
             type="email"
-            className={emailNotValid ? 'invalid' : undefined}
-            //  style={{ backgroundColor: emailNotValid ? '#fed2d2' : '' }}
+            $invalid={emailNotValid}
             onChange={(event) => handleInputChange('email', event.target.value)}
           />
         </p>
         <p>
-          <StyledLabel className={`label ${emailNotValid ? 'invalid' : undefined}`}>Password</StyledLabel>
+          <StyledLabel $invalid={passwordNotValid}>Password</StyledLabel>
           <StyledInput
             type="password"
-            className={passwordNotValid ? 'invalid' : undefined}
+            $invalid={passwordNotValid}
             onChange={(event) =>
               handleInputChange('password', event.target.value)
             }
