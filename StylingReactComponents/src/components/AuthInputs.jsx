@@ -1,14 +1,6 @@
 import { useState } from 'react';
-import { styled } from 'styled-components';
 import Button from './Button.jsx';
 import FormInputs from './FormInputs.jsx';
-
-const StyledDiv = styled.div`
-display: flex;
-flex-direction: column;
-gap: 0.5rem;
-margin-bottom: 1.5rem;
-`;
 
 
 export default function AuthInputs() {
@@ -33,12 +25,12 @@ export default function AuthInputs() {
 
   return (
     <div id="auth-inputs">
-      <StyledDiv>
+      <div className='flex flex-col mb-6 gap-2'>
         <FormInputs label="Email" invalid={emailNotValid} type="email" onChange={(event) => handleInputChange('email', event.target.value)} />
         <FormInputs label="Password" invalid={passwordNotValid} type="password" onChange={(event) =>
           handleInputChange('password', event.target.value)
         } />
-      </StyledDiv>
+      </div>
       <div className="actions">
         <button type="button" className="text-button">
           Create a new account
