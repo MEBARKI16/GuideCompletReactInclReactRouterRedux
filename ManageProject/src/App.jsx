@@ -4,12 +4,14 @@ import ProjectSideBar from "./Components/ProjectsSideBar";
 import { useState } from 'react';
 
 function App() {
+
   const [projectState, setProjectState] = useState(
     {
       selectedProjectId: undefined,
       projects: []
     }
   )
+  console.log(projectState.projects);
   const HandleStartAddingProject = () => {
     setProjectState((prev) => {
       return (
@@ -20,12 +22,20 @@ function App() {
       )
     })
   }
+  const HandleAddProjet = (newProjet) => {
+    const projet = {
+      ...newProjet,
+      id: Math.random()
+    }
+    setProjectState(prev => { return { ...prev, projects: [...prev.projects, projet] } }
+    )
+  }
   return (
     <div className="h-screen my-8 flex gap-8">
       <ProjectSideBar HandleStartAddingProject={HandleStartAddingProject} />
       {
         projectState.selectedProjectId === null ?
-          <NewProject />
+          <NewProject HandleAddProjet={HandleAddProjet} />
           :
           <NoProjectSelected HandleStartAddingProject={HandleStartAddingProject} />
       }
