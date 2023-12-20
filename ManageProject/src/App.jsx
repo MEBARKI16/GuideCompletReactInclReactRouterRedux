@@ -27,12 +27,12 @@ function App() {
       ...newProjet,
       id: Math.random()
     }
-    setProjectState(prev => { return { ...prev, projects: [...prev.projects, projet] } }
+    setProjectState(prev => { return { selectedProjectId: undefined, projects: [...prev.projects, projet] } }
     )
   }
   return (
     <div className="h-screen my-8 flex gap-8">
-      <ProjectSideBar HandleStartAddingProject={HandleStartAddingProject} />
+      <ProjectSideBar HandleStartAddingProject={HandleStartAddingProject} projects={projectState.projects} />
       {
         projectState.selectedProjectId === null ?
           <NewProject HandleAddProjet={HandleAddProjet} />
