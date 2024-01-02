@@ -27,15 +27,23 @@ function App() {
       ...newProjet,
       id: Math.random()
     }
-    setProjectState(prev => { return { selectedProjectId: undefined, projects: [...prev.projects, projet] } }
+    setProjectState(prev => {
+      return {
+        ...prev,
+        selectedProjectId: undefined
+      }
+    }
     )
+  }
+  const HandleCanceled = () => {
+    setProjectState(prev => { return { selectedProjectId: undefined, projects: [...prev.projects] } })
   }
   return (
     <div className="h-screen my-8 flex gap-8">
       <ProjectSideBar HandleStartAddingProject={HandleStartAddingProject} projects={projectState.projects} />
       {
         projectState.selectedProjectId === null ?
-          <NewProject HandleAddProjet={HandleAddProjet} />
+          <NewProject HandleAddProjet={HandleAddProjet} HandleCanceled={HandleCanceled} />
           :
           <NoProjectSelected HandleStartAddingProject={HandleStartAddingProject} />
       }
