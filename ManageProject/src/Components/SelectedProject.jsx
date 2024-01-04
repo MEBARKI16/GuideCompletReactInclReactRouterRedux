@@ -1,3 +1,5 @@
+import Tasks from "./Tasks";
+
 const SelectedProject = ({ element, DeletProject }) => {
     const formattedDate = new Date(element.date).toLocaleDateString("en-US")
     return (
@@ -10,7 +12,7 @@ const SelectedProject = ({ element, DeletProject }) => {
                 <p className="mb-4 text-stone-400">{formattedDate}</p>
                 <p className="text-stone-600 whitespace-pre-wrap">{element.description}</p>
             </header>
-            Tasks
+            <Tasks />
         </div>
     );
 }
