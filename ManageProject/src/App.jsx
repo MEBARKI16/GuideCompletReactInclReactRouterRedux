@@ -43,6 +43,13 @@ function App() {
       selectedProjectId: id
     }))
   }
+  const DeletProject = () => {
+    setProjectState(prev => ({
+      ...prev,
+      selectedProjectId: undefined,
+      projects: prev.projects.filter(p => p.id !== prev.selectedProjectId)
+    }))
+  }
   const element = projectState.selectedProjectId
     ? projectState.projects.find(el => el.id === projectState.selectedProjectId)
     : null;
@@ -57,7 +64,7 @@ function App() {
           projectState.selectedProjectId === undefined ?
             <NoProjectSelected HandleStartAddingProject={HandleStartAddingProject} />
             :
-            <SelectedProject element={element} />
+            <SelectedProject DeletProject={DeletProject} element={element} />
       }
 
     </div>
