@@ -2,6 +2,7 @@ import NewProject from "./Components/NewProject";
 import NoProjectSelected from "./Components/NoProjectSelected";
 import ProjectSideBar from "./Components/ProjectsSideBar";
 import { useState } from 'react';
+import SelectedProject from "./Components/SelectedProject";
 
 function App() {
 
@@ -27,25 +28,36 @@ function App() {
       ...newProjet,
       id: Math.random()
     }
-    setProjectState(prev => {
-      return {
-        ...prev,
-        selectedProjectId: undefined
-      }
-    }
+    setProjectState(prev => { return { selectedProjectId: undefined, projects: [...prev.projects, projet] } }
     )
   }
   const HandleCanceled = () => {
-    setProjectState(prev => { return { selectedProjectId: undefined, projects: [...prev.projects] } })
+    setProjectState(prev => ({
+      ...prev,
+      selectedProjectId: undefined
+    }))
   }
+  const SetId = (id) => {
+    setProjectState(prev => ({
+      ...prev,
+      selectedProjectId: id
+    }))
+  }
+  const element = projectState.selectedProjectId
+    ? projectState.projects.find(el => el.id === projectState.selectedProjectId)
+    : null;
+
   return (
     <div className="h-screen my-8 flex gap-8">
-      <ProjectSideBar HandleStartAddingProject={HandleStartAddingProject} projects={projectState.projects} />
+      <ProjectSideBar idSelected={projectState.selectedProjectId} SetId={SetId} HandleStartAddingProject={HandleStartAddingProject} projects={projectState.projects} />
       {
         projectState.selectedProjectId === null ?
           <NewProject HandleAddProjet={HandleAddProjet} HandleCanceled={HandleCanceled} />
           :
-          <NoProjectSelected HandleStartAddingProject={HandleStartAddingProject} />
+          projectState.selectedProjectId === undefined ?
+            <NoProjectSelected HandleStartAddingProject={HandleStartAddingProject} />
+            :
+            <SelectedProject element={element} />
       }
 
     </div>
