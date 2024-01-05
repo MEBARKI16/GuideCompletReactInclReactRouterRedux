@@ -9,10 +9,25 @@ function App() {
   const [projectState, setProjectState] = useState(
     {
       selectedProjectId: undefined,
-      projects: []
+      projects: [],
+      tasks: []
     }
   )
-  console.log(projectState.projects);
+  const HandleAddTask = (task) => {
+    const t = {
+      name: task,
+      projectId: projectState.selectedProjectId,
+      id: Math.random()
+    }
+    setProjectState(prev => { return { ...prev, tasks: [...prev.tasks, t] } }
+    )
+  }
+  const HandleDeleteTask = (id) => {
+    setProjectState(prev => ({
+      ...prev,
+      tasks: prev.tasks.filter(p => p.id !== id)
+    }))
+  }
   const HandleStartAddingProject = () => {
     setProjectState((prev) => {
       return (
@@ -28,7 +43,7 @@ function App() {
       ...newProjet,
       id: Math.random()
     }
-    setProjectState(prev => { return { selectedProjectId: undefined, projects: [...prev.projects, projet] } }
+    setProjectState(prev => { return { ...prev, selectedProjectId: undefined, projects: [...prev.projects, projet] } }
     )
   }
   const HandleCanceled = () => {
@@ -50,6 +65,7 @@ function App() {
       projects: prev.projects.filter(p => p.id !== prev.selectedProjectId)
     }))
   }
+  const tasks = projectState.tasks.filter(x => x.projectId === projectState.selectedProjectId)
   const element = projectState.selectedProjectId
     ? projectState.projects.find(el => el.id === projectState.selectedProjectId)
     : null;
@@ -64,7 +80,7 @@ function App() {
           projectState.selectedProjectId === undefined ?
             <NoProjectSelected HandleStartAddingProject={HandleStartAddingProject} />
             :
-            <SelectedProject DeletProject={DeletProject} element={element} />
+            <SelectedProject tasks={tasks} HandleDeleteTask={HandleDeleteTask} HandleAddTask={HandleAddTask} DeletProject={DeletProject} element={element} />
       }
 
     </div>

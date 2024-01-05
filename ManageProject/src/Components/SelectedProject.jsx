@@ -1,6 +1,6 @@
 import Tasks from "./Tasks";
 
-const SelectedProject = ({ element, DeletProject }) => {
+const SelectedProject = ({ element, DeletProject, HandleAddTask, HandleDeleteTask, tasks }) => {
     const formattedDate = new Date(element.date).toLocaleDateString("en-US")
     return (
         <div className="w-[35rem] mt-16">
@@ -12,7 +12,7 @@ const SelectedProject = ({ element, DeletProject }) => {
                 <p className="mb-4 text-stone-400">{formattedDate}</p>
                 <p className="text-stone-600 whitespace-pre-wrap">{element.description}</p>
             </header>
-            <Tasks />
+            <Tasks tasks={tasks} HandleDeleteTask={HandleDeleteTask} HandleAddTask={HandleAddTask} />
         </div>
     );
 }
