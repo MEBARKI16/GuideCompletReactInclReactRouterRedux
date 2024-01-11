@@ -1,5 +1,4 @@
 import Store from "../store/shopping-Cart";
-import { useContext } from "react";
 export default function Product({
   id,
   image,
@@ -7,20 +6,24 @@ export default function Product({
   price,
   description,
 }) {
-  const onAddToCart = useContext(Store);
+
   return (
-    <article className="product">
-      <img src={image} alt={title} />
-      <div className="product-content">
-        <div>
-          <h3>{title}</h3>
-          <p className='product-price'>${price}</p>
-          <p>{description}</p>
-        </div>
-        <p className='product-actions'>
-          <button onClick={() => onAddToCart.handleAddItemToCart(id)}>Add to Cart</button>
-        </p>
-      </div>
-    </article>
+    <Store.Consumer>
+      {(x) => {
+        return <article className="product">
+          <img src={image} alt={title} />
+          <div className="product-content">
+            <div>
+              <h3>{title}</h3>
+              <p className='product-price'>${price}</p>
+              <p>{description}</p>
+            </div>
+            <p className='product-actions'>
+              <button onClick={() => x.handleAddItemToCart(id)}>Add to Cart</button>
+            </p>
+          </div>
+        </article>
+      }}
+    </Store.Consumer>
   );
 }
