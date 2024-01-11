@@ -66,7 +66,7 @@ function App() {
     });
   }
   return (
-    <Store.Provider>
+    <Store.Provider value={{ items: [] }}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
