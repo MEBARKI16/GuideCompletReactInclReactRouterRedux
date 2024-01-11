@@ -65,8 +65,12 @@ function App() {
       };
     });
   }
+  const data = {
+    items: shoppingCart.items,
+    handleAddItemToCart
+  }
   return (
-    <Store.Provider value={{ items: [] }}>
+    <Store.Provider value={data}>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
