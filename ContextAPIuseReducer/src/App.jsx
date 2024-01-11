@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import Store from './store/shopping-Cart.jsx';
 import Header from './components/Header.jsx';
 import Shop from './components/Shop.jsx';
 import Product from './components/Product.jsx';
@@ -65,9 +65,8 @@ function App() {
       };
     });
   }
-
   return (
-    <>
+    <Store.Provider>
       <Header
         cart={shoppingCart}
         onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
@@ -79,7 +78,7 @@ function App() {
           </li>
         ))}
       </Shop>
-    </>
+    </Store.Provider>
   );
 }
 
