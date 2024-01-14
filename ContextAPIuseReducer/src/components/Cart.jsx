@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Store from "../store/shopping-Cart";
+import { Store } from "../store/shopping-Cart";
 export default function Cart() {
   const itemsCnxt = useContext(Store);
   const onUpdateItemQuantity = itemsCnxt.handleUpdateCartItemQuantity;

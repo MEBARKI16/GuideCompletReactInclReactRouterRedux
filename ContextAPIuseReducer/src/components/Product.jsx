@@ -1,4 +1,4 @@
-import Store from "../store/shopping-Cart";
+import { Store } from "../store/shopping-Cart";
 export default function Product({
   id,
   image,
@@ -6,7 +6,7 @@ export default function Product({
   price,
   description,
 }) {
-console.log("hello1")
+  console.log("hello1")
   return (
     <Store.Consumer>
       {(x) => {

@@ -1,5 +1,5 @@
 import { useRef, useContext } from 'react';
-import Store from '../store/shopping-Cart.jsx';
+import { Store } from '../store/shopping-Cart.jsx';
 
 import CartModal from './CartModal.jsx';
 
