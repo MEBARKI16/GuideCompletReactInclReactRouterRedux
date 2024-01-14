@@ -67,18 +67,18 @@ function App() {
   }
   const data = {
     items: shoppingCart.items,
-    handleAddItemToCart
+    handleAddItemToCart,
+    handleUpdateCartItemQuantity
   }
   return (
     <Store.Provider value={data}>
       <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+        
       />
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product} />
           </li>
         ))}
       </Shop>

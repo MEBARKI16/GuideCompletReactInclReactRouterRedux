@@ -6,7 +6,7 @@ export default function Product({
   price,
   description,
 }) {
-
+console.log("hello1")
   return (
     <Store.Consumer>
       {(x) => {
