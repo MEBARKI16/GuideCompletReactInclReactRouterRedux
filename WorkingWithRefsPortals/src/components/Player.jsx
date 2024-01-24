@@ -1,15 +1,14 @@
-import { useContext, useState } from "react";
-import { Store } from "../Store/Store";
+import { useState, useRef } from "react";
 
 export default function Player() {
-  const [input, setInput] = useState("")
-  const { name, setName } = useContext(Store);
+  const InputText = useRef();
+  const [input, setInput] = useState(null)
   return (
     <section id="player">
-      <h2>Welcome {name}</h2>
+      <h2>Welcome {input ?? "unknow"}</h2>
       <p>
-        <input value={input} onChange={(e) => setInput(e.target.value)} type="text" />
-        <button onClick={() => { setName(input); setInput("") }}>Set Name</button>
+        <input ref={InputText} type="text" />
+        <button onClick={() => { setInput(InputText.current.value); InputText.current.value = ""; }}>Set Name</button>
       </p>
     </section>
   );
