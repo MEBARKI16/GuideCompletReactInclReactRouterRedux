@@ -2,14 +2,17 @@ import { useState, useRef } from "react";
 
 export default function Player() {
   const InputText = useRef();
+  const InputText2 = useRef();
   const [input, setInput] = useState(null)
   const HandleClick = () => {
     setInput(InputText.current.value);
+    InputText2.current.innerText = "Welcome " + InputText.current.value;
     InputText.current.value = "";
+    console.log(InputText2.current.value)
   }
   return (
     <section id="player">
-      <h2>Welcome {input ?? "unknow"}</h2>
+      <h2 ref={InputText2}>Welcome unknow</h2>
       <p>
         <input ref={InputText} type="text" />
         <button onClick={HandleClick}>Set Name</button>
