@@ -1,12 +1,13 @@
 import { useState, useRef } from "react";
+import ResultsModal from "./ResultsModal";
 const TimerChallenge = ({ title, targetTime }) => {
     const timer = useRef();
-    const [isLost, setIsLost] = useState(false)
+    const resultRef = useRef();
     const [isStart, setIsStart] = useState(false)
     const HandleStart = () => {
-        setIsLost(false);
         timer.current = setTimeout(() => {
-            setIsLost(true);
+            resultRef.current.showModal();
+
             setIsStart(false);
         }, targetTime * 1000);
         setIsStart(true)
@@ -17,8 +18,8 @@ const TimerChallenge = ({ title, targetTime }) => {
     }
     return (
         <section className="challenge">
+            <ResultsModal ref={resultRef} result="low" targetTime={targetTime} />
             <h2>{title}</h2>
-            {isLost && <p>You Lost</p>}
             <p className="challenge-time">
                 {targetTime} second{targetTime > 1 ? "s" : ""}
             </p>
