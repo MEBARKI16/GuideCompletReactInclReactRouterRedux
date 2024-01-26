@@ -6,8 +6,7 @@ const TimerChallenge = ({ title, targetTime }) => {
     const [isStart, setIsStart] = useState(false)
     const HandleStart = () => {
         timer.current = setTimeout(() => {
-            resultRef.current.showModal();
-
+            resultRef.current.open();
             setIsStart(false);
         }, targetTime * 1000);
         setIsStart(true)
