@@ -3,6 +3,7 @@ import { forwardRef, useImperativeHandle, useRef } from "react";
 const ResultsModal = forwardRef(({ targetTime, tempsRestant, HandleReset }, ref) => {
     const x = (tempsRestant / 1000).toFixed(2);
     const isLow = tempsRestant <= 0;
+    const score = ((1 - x / targetTime) * 100).toFixed(2);
     const dialogRef = useRef();
     useImperativeHandle(ref, () => {
         return {
@@ -14,6 +15,7 @@ const ResultsModal = forwardRef(({ targetTime, tempsRestant, HandleReset }, ref)
     return (
         <dialog ref={dialogRef} className="result-modal">
             {isLow && <h2>You Low</h2>}
+            {!isLow && <h2>Score : {score}%</h2>}
             <p>
                 The target time was <strong>{targetTime} seconds.</strong>
             </p>
