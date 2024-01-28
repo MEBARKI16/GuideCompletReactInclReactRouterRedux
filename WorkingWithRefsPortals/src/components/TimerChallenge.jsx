@@ -3,17 +3,21 @@ import ResultsModal from "./ResultsModal";
 const TimerChallenge = ({ title, targetTime }) => {
     const timer = useRef();
     const resultRef = useRef();
-    const [isStart, setIsStart] = useState(false)
+    const [tempsRestant, setTempsRestant] = useState(targetTime * 1000);
+    let timerIsActive = (tempsRestant > 0) && (tempsRestant < targetTime * 1000);
+    if (tempsRestant <= 0) {
+        clearInterval(timer.current);
+        resultRef.current.open();
+        setTempsRestant(targetTime * 1000);
+    }
     const HandleStart = () => {
-        timer.current = setTimeout(() => {
-            resultRef.current.open();
-            setIsStart(false);
-        }, targetTime * 1000);
-        setIsStart(true)
+        timer.current = setInterval(() => {
+            setTempsRestant((prev) => { return (prev - 10) });
+        }, 10);
     }
     const HandleStop = () => {
-        clearTimeout(timer.current);
-        setIsStart(false)
+        clearInterval(timer.current);
+        resultRef.current.open();
     }
     return (
         <section className="challenge">
@@ -23,12 +27,12 @@ const TimerChallenge = ({ title, targetTime }) => {
                 {targetTime} second{targetTime > 1 ? "s" : ""}
             </p>
             <p>
-                <button onClick={isStart ? HandleStop : HandleStart}>
-                    {isStart ? "Stop" : "Start"} Challenge
+                <button onClick={timerIsActive ? HandleStop : HandleStart}>
+                    {timerIsActive ? "Stop" : "Start"} Challenge
                 </button>
             </p>
             <p>
-                {isStart ? "Time is running..." : "Time is inactive"}
+                {timerIsActive ? "Time is running..." : "Time is inactive"}
             </p>
         </section>
     );
