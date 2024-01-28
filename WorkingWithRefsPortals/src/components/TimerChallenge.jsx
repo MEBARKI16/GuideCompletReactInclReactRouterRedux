@@ -8,6 +8,9 @@ const TimerChallenge = ({ title, targetTime }) => {
     if (tempsRestant <= 0) {
         clearInterval(timer.current);
         resultRef.current.open();
+    }
+
+    const HandleReset = () => {
         setTempsRestant(targetTime * 1000);
     }
     const HandleStart = () => {
@@ -21,7 +24,7 @@ const TimerChallenge = ({ title, targetTime }) => {
     }
     return (
         <section className="challenge">
-            <ResultsModal ref={resultRef} result="low" targetTime={targetTime} />
+            <ResultsModal ref={resultRef} targetTime={targetTime} tempsRestant={tempsRestant} HandleReset={HandleReset} />
             <h2>{title}</h2>
             <p className="challenge-time">
                 {targetTime} second{targetTime > 1 ? "s" : ""}

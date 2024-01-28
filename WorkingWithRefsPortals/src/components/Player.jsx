@@ -3,12 +3,10 @@ import { useState, useRef } from "react";
 export default function Player() {
   const InputText = useRef();
   const InputText2 = useRef();
-  const [input, setInput] = useState(null)
   const HandleClick = () => {
     setInput(InputText.current.value);
     InputText2.current.innerText = "Welcome " + InputText.current.value;
     InputText.current.value = "";
-    console.log(InputText2.current.value)
   }
   return (
     <section id="player">
