@@ -11,8 +11,10 @@ function App() {
   const modal = useRef();
   const selectedPlace = useRef();
   const [pickedPlaces, setPickedPlaces] = useState([]);
+  const [availablePlaces, setAvailablePlaces] = useState([]);
   navigator.geolocation.getCurrentPosition((position) => {
     const newTab = sortPlacesByDistance(AVAILABLE_PLACES, position.coords.latitude, position.coords.longitude);
+    setAvailablePlaces(newTab);
   })
   function handleStartRemovePlace(id) {
     modal.current.open();
